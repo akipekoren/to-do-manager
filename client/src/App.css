@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+.list-group-item {
+  background-color: transparent;
+}
+
+.list-group-item.active {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.list-group-item-action:hover {
+  background-color: #9becae;
+}
