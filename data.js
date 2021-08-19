@@ -2,7 +2,7 @@
 
 const sqlite = require("sqlite3");
 const moment = require("moment");
-const bcrypt = require("bcrypt");
+var bcrypt = require("bcryptjs");
 const db = new sqlite.Database("tasks.db", (err) => {
   if (err) throw err;
 });
