@@ -6,8 +6,8 @@ const morgan = require("morgan"); // logging middleware
 
 const passport = require("passport");
 const passportLocal = require("passport-local");
-
-const PORT = 3001;
+const path = require("path");
+const PORT = process.env.PORT || 3001;
 
 // initialize and configure passport
 passport.use(
@@ -195,6 +195,18 @@ app.get("/api/sessions/current", (req, res) => {
     res.status(200).json(req.user);
   } else res.status(401).json({ error: "Unauthenticated user!" });
 });
+
+// Serve static assets if in production
+
+if (process.env.NODE_ENV === "production") {
+  //Set static folder
+
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}/`)
