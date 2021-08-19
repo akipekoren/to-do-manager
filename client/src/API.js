@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "http://localhost:3001";
 
 async function getTasks() {
   const response = await fetch(url + "/api/tasks");
@@ -55,7 +55,7 @@ async function getUserInfo() {
 }
 
 async function logIn(credentials) {
-  let response = await fetch("/api/sessions", {
+  let response = await fetch(url + "/api/sessions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

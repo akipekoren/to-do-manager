@@ -41,10 +41,11 @@ passport.deserializeUser((id, done) => {
       done(err, null);
     });
 });
-
+const cors = require("cors");
 app = new express();
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
 
 // custom middleware: check if a given request is coming from an authenticated user
 const isLoggedIn = (req, res, next) => {
@@ -159,6 +160,7 @@ app.delete("/api/tasks/:id", async (req, res) => {
 
 // POST /sessions
 // login
+
 app.post("/api/sessions", function (req, res, next) {
   console.log(req.body);
   passport.authenticate("local", (err, user, info) => {
