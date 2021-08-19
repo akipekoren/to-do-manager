@@ -1,22 +1,24 @@
 {
-  "name": "to-do-manager",
+  "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Server",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && npm install && npm start",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/akipekoren/to-do-manager.git"
-  },
-  "keywords": [],
-  "author": "",
+  "author": "Ahmet Kaan Ipekoren",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/akipekoren/to-do-manager/issues"
-  },
-  "homepage": "https://github.com/akipekoren/to-do-manager#readme"
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "moment": "^2.29.1",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sqlite3": "^5.0.2"
+  }
 }
