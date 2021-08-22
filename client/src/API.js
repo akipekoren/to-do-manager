@@ -1,19 +1,19 @@
 const url = "http://localhost:3001";
 
 async function getTasks() {
-  const response = await fetch(url + "/api/tasks");
+  const response = await fetch("/api/tasks");
   const tasks = await response.json();
   return tasks;
 }
 
 async function getFilteredTasks(filter) {
-  const response = await fetch(url + "/api/tasks/?filter=" + filter);
+  const response = await fetch("/api/tasks/?filter=" + filter);
   const tasks = await response.json();
   return tasks;
 }
 
 async function addNewTask(task) {
-  const response = await fetch(url + "/api/tasks", {
+  const response = await fetch("/api/tasks", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ ...task }),
@@ -24,7 +24,7 @@ async function addNewTask(task) {
 }
 
 async function deleteTask(id) {
-  const response = await fetch(url + "/api/tasks/" + id, {
+  const response = await fetch("/api/tasks/" + id, {
     method: "DELETE",
   });
 
@@ -33,7 +33,7 @@ async function deleteTask(id) {
 }
 
 async function updateTask(task) {
-  const response = await fetch(url + "/api/tasks/" + task.id, {
+  const response = await fetch("/api/tasks/" + task.id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -45,7 +45,7 @@ async function updateTask(task) {
 }
 
 async function getUserInfo() {
-  const response = await fetch(url + "/api/sessions/current");
+  const response = await fetch("/api/sessions/current");
   const userInfo = await response.json();
   if (response.ok) {
     return userInfo;
@@ -55,7 +55,7 @@ async function getUserInfo() {
 }
 
 async function logIn(credentials) {
-  let response = await fetch(url + "/api/sessions", {
+  let response = await fetch("/api/sessions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
